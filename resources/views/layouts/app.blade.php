@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="{{url('/')}}/css/animate.css">
 <link rel="stylesheet" href="{{url('/')}}/css/main.css">
 <link rel="stylesheet" href="{{url('/')}}/css/responsive.css">
+
 </head>
 <body>
 
@@ -140,7 +141,6 @@ Contact
 <div id="preloader">
 <div class="loader" id="loader-1"></div>
 </div>
-
 
 <script src="{{url('/')}}/js/jquery-min.js"></script>
 <script src="{{url('/')}}/js/popper.min.js"></script>

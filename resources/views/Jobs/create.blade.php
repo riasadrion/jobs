@@ -76,16 +76,18 @@
 <label class="control-label">Description</label>
 </div>
 <section id="editor">
-<div id="summernote"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quia aut modi fugit, ratione saepe perferendis odio optio repellat dolorum voluptas excepturi possimus similique veritatis nobis. Provident cupiditate delectus, optio?</p></div>
+<textarea style="width: 100%;height: 100px">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quia aut modi fugit, ratione saepe perferendis odio optio repellat dolorum voluptas excepturi possimus similique veritatis nobis. Provident cupiditate delectus, optio?</textarea>
 </section>
 <div class="form-group">
 <label class="control-label">Application email / URL</label>
 <input type="text" class="form-control" placeholder="Enter an email address or website URL">
 </div>
+
 <div class="form-group">
 <label class="control-label">Closing Date <span>(optional)</span></label>
-<input type="text" class="form-control datepicker" data-provide="datepicker" placeholder="dd-mm-yyyy">
+<input type="text" class="form-control" placeholder="yyyy-mm-dd">
 </div>
+
 <!-- <div class="divider">
 <h3 class="job-title">Company Details</h3>
 </div>
@@ -116,10 +118,6 @@
 </div>
 </div>
 </div>
+
 </section>
-
-<script>
-	$('.datepicker').datepicker();
-
-</script>
 @endsection
