@@ -2,22 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Job;
+use App\Location;
 use Illuminate\Http\Request;
 
-class JobController extends Controller
+class LocationController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         //
@@ -29,9 +23,8 @@ class JobController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
-
-        return view('jobs.create');
+    {
+        //
     }
 
     /**
@@ -42,32 +35,16 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {
-        $job = new Job();
-
-        $job->title = request('title');
-        $job->employer_id = request('employer_id');
-        $job->category_id = request('category_id');
-        $job->type = request('type');
-        $job->tag = request('tag');
-        $job->location_id = request('location_id');
-        $job->description = request('description');
-        $job->deadline = request('deadline');
-        $job->custom_url = request('custom_url');
-
-
-
-        $job->save();
-
-        return redirect("/");
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Job  $job
+     * @param  \App\Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function show(Job $job)
+    public function show(Location $location)
     {
         //
     }
@@ -75,10 +52,10 @@ class JobController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Job  $job
+     * @param  \App\Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function edit(Job $job)
+    public function edit(Location $location)
     {
         //
     }
@@ -87,10 +64,10 @@ class JobController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Job  $job
+     * @param  \App\Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Job $job)
+    public function update(Request $request, Location $location)
     {
         //
     }
@@ -98,10 +75,10 @@ class JobController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Job  $job
+     * @param  \App\Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Job $job)
+    public function destroy(Location $location)
     {
         //
     }
