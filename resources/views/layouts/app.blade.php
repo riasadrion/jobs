@@ -1,13 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="keywords" content="Bootstrap, Landing page, Template, Registration, Landing">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="author" content="Grayrids">
-<title>Job Board</title>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+
+<!-- themes css -->
 
 <link rel="stylesheet" href="{{url('/')}}/css/bootstrap.min.css">
 <link rel="stylesheet" href="{{url('/')}}/css/line-icons.css">
@@ -34,12 +47,12 @@
 <span class="lni-menu"></span>
 <span class="lni-menu"></span>
 </button>
-<a href="/" class="navbar-brand"><img height="50" src="{{url('/')}}/img/logo.png" alt=""></a>
+<a href="{{ url('/') }}" class="navbar-brand"><img height="50" src="{{url('/')}}/img/logo.png" alt=""></a>
 </div>
 <div class="collapse navbar-collapse" id="main-navbar">
 <ul class="navbar-nav mr-auto w-100 justify-content-end">
 <li class="nav-item dropdown active">
-<a class="nav-link dropdown-toggle" href="/">
+<a class="nav-link dropdown-toggle" href="{{ url('/') }}">
 Home
 </a>
 </li>
@@ -48,9 +61,35 @@ Home
 Contact
 </a>
 </li>
-<li class="nav-item">
-<a class="nav-link" href="login.html">Sign In</a>
-</li>
+
+@guest
+    <li class="nav-item">
+       <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+    </li>
+    @if (Route::has('register'))
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+        </li>
+    @endif
+@else
+    <li class="nav-item dropdown">
+        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+            {{ Auth::user()->name }} <span class="caret"></span>
+        </a>
+
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{{ route('logout') }}"
+               onclick="event.preventDefault();
+                             document.getElementById('logout-form').submit();">
+                {{ __('Logout') }}
+            </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+        </div>
+    </li>
+@endguest
 <li class="button-group">
 <a href="/jobs/create" class="button btn btn-common">Post a Job</a>
 </li>
