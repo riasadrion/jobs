@@ -24,15 +24,23 @@
 <div class="col-lg-9 col-md-12 col-xs-12">
 <div class="post-job box">
 <h3 class="job-title">Post a new Job</h3>
-<form class="form-ad" action="/jobs/store" method="POST">
+<form class="form-ad" action="/jobs" method="POST">
+	@csrf
 <div class="form-group">
 <label class="control-label">Job Title</label>
-<input type="text" name="title" class="form-control" placeholder="Write job title">
+<input type="text" name="title" class="form-control" placeholder="Write job title" required>
 </div>
 
 <div class="form-group">
-<label class="control-label">Location <span>(optional)</span></label>
-<input type="text" class="form-control" placeholder="e.g.London">
+<label class="control-label">Select location</label>
+<div class="search-category-container">
+<label class="styled-select">
+<select name="location_id" class="dropdown-product selectpicker" required>
+<option value="1">Dhaka</option>
+<option value="2">Gazipur</option>
+</select>
+</label>
+</div>
 </div>
 
 
@@ -40,10 +48,22 @@
 <label class="control-label">Select Employer</label>
 <div class="search-category-container">
 <label class="styled-select">
-<select name="employer_id" class="dropdown-product selectpicker">
-<option value="">H&M</option>
-<option value="">MASCO</option>
+<select name="employer_id" class="dropdown-product selectpicker" required>
+<option value="1">H&M</option>
+<option value="2">MASCO</option>
+</select>
+</label>
+</div>
+</div>
 
+
+<div class="form-group">
+<label class="control-label">Select Type</label>
+<div class="search-category-container">
+<label class="styled-select">
+<select name="type" class="dropdown-product selectpicker">
+<option value="1">Full Time</option>
+<option value="3">Part Time</option>
 </select>
 </label>
 </div>
@@ -54,9 +74,8 @@
 <div class="search-category-container">
 <label class="styled-select">
 <select name="category_id" class="dropdown-product selectpicker">
-<option>All Categories</option>
-<option>Finance</option>
-<option>IT & Engineering</option>
+<option value="2">Finance</option>
+<option value="1">IT & Engineering</option>
 <option>Education/Training</option>
 <option>Art/Design</option>
 <option>Sale/Markting</option>
@@ -67,25 +86,31 @@
 </label>
 </div>
 </div>
+
+
 <div class="form-group">
 <label class="control-label">Job Tags <span>(optional)</span></label>
-<input type="text" class="form-control" placeholder="e.g.PHP,Social Media,Management">
+<input type="text" name="tag" class="form-control" placeholder="e.g.PHP,Social Media,Management">
 <p class="note">Comma separate tags, such as required skills or technologies, for this job.</p>
 </div>
+
+
 <div class="form-group">
 <label class="control-label">Description</label>
 </div>
+
 <section id="editor">
-<textarea style="width: 100%;height: 100px">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quia aut modi fugit, ratione saepe perferendis odio optio repellat dolorum voluptas excepturi possimus similique veritatis nobis. Provident cupiditate delectus, optio?</textarea>
+<textarea name="description" style="width: 100%;height: 100px" required>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quia aut modi fugit, ratione saepe perferendis odio optio repellat dolorum voluptas excepturi possimus similique veritatis nobis. Provident cupiditate delectus, optio?</textarea>
 </section>
+
 <div class="form-group">
-<label class="control-label">Application email / URL</label>
-<input type="text" class="form-control" placeholder="Enter an email address or website URL">
+<label class="control-label">Application URL</label>
+<input type="text" name="custom_url" class="form-control" placeholder="Enter an email address or website URL">
 </div>
 
 <div class="form-group">
 <label class="control-label">Closing Date <span>(optional)</span></label>
-<input type="text" class="form-control" placeholder="yyyy-mm-dd">
+<input type="text" name="deadline" class="form-control" placeholder="yyyy-mm-dd">
 </div>
 
 <!-- <div class="divider">
@@ -106,13 +131,14 @@
 <div class="form-group">
 <label class="control-label">Tagline <span>(optional)</span></label>
 <input type="text" class="form-control" placeholder="Briefly describe your company">
-</div> -->
+</div> 
 <div class="custom-file mb-3">
 <input type="file" class="custom-file-input" id="validatedCustomFile" required>
 <label class="custom-file-label form-control" for="validatedCustomFile">Choose file...</label>
 <div class="invalid-feedback">Example invalid custom file feedback</div>
-</div>
-<a href="#" class="btn btn-common">Submit your job</a>
+</div>-->
+
+<input type="submit"  name="" class="btn btn-common" value="Submit Your Job">
 </form>
 </div>
 </div>
