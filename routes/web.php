@@ -11,6 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PagesController@index');
+Route::resource('jobs', 'JobController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
