@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 
+@section('css')
+	
+	<link href="{{url('/css/select2.min.css')}}" rel="stylesheet" />
+
+@endsection
+
 @section('content')
 
 </header>
@@ -90,8 +96,14 @@
 
 <div class="form-group">
 <label class="control-label">Job Tags <span>(optional)</span></label>
-<input type="text" name="tag" class="form-control" placeholder="e.g.PHP,Social Media,Management">
-<p class="note">Comma separate tags, such as required skills or technologies, for this job.</p>
+ <select class="js-example-basic-multiple form-control" name="states[]" multiple="multiple">
+  <option value="AL">Alabama</option>
+  <option value="WY">Wyoming</option>
+  <option value="WY">Wyoming</option>
+  <option value="WY">Wyoming</option>
+  <option value="WY">Wyoming</option>
+  <option value="WY">Wyoming</option>
+</select>
 </div>
 
 
@@ -146,4 +158,18 @@
 </div>
 
 </section>
+@endsection
+
+
+@section('js')
+	
+
+  <script src="{{url('/js/select2.min.js')}}"></script>
+
+  <script type="text/javascript">
+
+    $('.js-example-basic-multiple').select2();
+
+  </script>
+
 @endsection
