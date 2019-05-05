@@ -19,6 +19,7 @@
 <!-- Styles -->
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+@yield('css')
 
 <!-- themes css -->
 
@@ -31,8 +32,6 @@
 <link rel="stylesheet" href="{{url('/')}}/css/main.css">
 <link rel="stylesheet" href="{{url('/')}}/css/responsive.css">
 
-
-@yield('css')
 
 
 </head>
@@ -185,9 +184,17 @@ Contact
 <div class="loader" id="loader-1"></div>
 </div>
 
+ <script src="{{url('/')}}/js/jquery-min.js"></script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6/js/select2.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.select2-multi').select2();
+    });
+  </script>
 @yield('js')
 
-<script src="{{url('/')}}/js/jquery-min.js"></script>
 <script src="{{url('/')}}/js/popper.min.js"></script>
 <script src="{{url('/')}}/js/bootstrap.min.js"></script>
 <script src="{{url('/')}}/js/owl.carousel.min.js"></script>

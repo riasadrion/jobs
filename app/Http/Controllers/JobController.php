@@ -20,7 +20,8 @@ class JobController extends Controller
 
     public function index()
     {
-        //
+        $jobs = Job::all();
+        return view('jobs.index');
     }
 
     /**
@@ -69,7 +70,7 @@ class JobController extends Controller
      */
     public function show(Job $job)
     {
-        //
+        
     }
 
     /**
