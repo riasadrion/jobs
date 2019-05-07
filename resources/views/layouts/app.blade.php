@@ -188,13 +188,7 @@ Contact
 
  <script src="{{url('/')}}/js/jquery-min.js"></script>
   
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6/js/select2.min.js"></script>
 
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('.select2-multi').select2();
-    });
-  </script>
 @yield('js')
 
 <script src="{{url('/')}}/js/popper.min.js"></script>
