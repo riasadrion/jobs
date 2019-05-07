@@ -3,12 +3,12 @@
 
 @section('css')
 	
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6/css/select2.min.css" rel="stylesheet" />
+<link href="{{url('/')}}/css/select2.min.css" rel="stylesheet" />
 
 
 
 
-  <link rel="stylesheet" href="https://www.cssscript.com/demo/window-date-time-picker/dist/css/window-date-picker.css">
+  <link rel="stylesheet" href="{{url('/')}}/css/window-date-picker.css">
 
 
 
@@ -156,7 +156,7 @@
 @section('js')
 
 
-  <script src="https://www.cssscript.com/demo/window-date-time-picker/dist/js/window-date-picker.js"></script>
+  <script src="{{url('/')}}/js/window-date-picker.js"></script>
 
 
   <script type="text/javascript">
