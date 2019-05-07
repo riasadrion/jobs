@@ -184,10 +184,11 @@ Contact
 <div id="preloader">
 <div class="loader" id="loader-1"></div>
 </div>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
 
 @yield('js')
 
-<script src="{{url('/')}}/js/jquery-min.js"></script>
 <script src="{{url('/')}}/js/popper.min.js"></script>
 <script src="{{url('/')}}/js/bootstrap.min.js"></script>
 <script src="{{url('/')}}/js/owl.carousel.min.js"></script>

@@ -5,6 +5,14 @@
 	
 	<link href="{{url('/css/select2.min.css')}}" rel="stylesheet" />
 
+
+
+
+  <link rel="stylesheet" href="https://www.cssscript.com/demo/window-date-time-picker/dist/css/window-date-picker.css">
+
+
+
+
 @endsection
 
 @section('content')
@@ -76,27 +84,21 @@
 </div>
 
 <div class="form-group">
-<label class="control-label">Category</label>
-<div class="search-category-container">
-<label class="styled-select">
-<select name="category_id" class="dropdown-product selectpicker">
-<option value="2">Finance</option>
-<option value="1">IT & Engineering</option>
-<option>Education/Training</option>
-<option>Art/Design</option>
-<option>Sale/Markting</option>
-<option>Healthcare</option>
-<option>Science</option>
-<option>Food Services</option>
+<label class="control-label">Job Categories <span>(optional)</span></label>
+ <select class="js-example-basic-multiple1 form-control dropdown-product selectpicker" name="tags[]" multiple="multiple">
+  <option value="AL">Alabama</option>
+  <option value="WY">Wyoming</option>
+  <option value="WY">Wyoming</option>
+  <option value="WY">Wyoming</option>
+  <option value="WY">Wyoming</option>
+  <option value="WY">Wyoming</option>
 </select>
-</label>
-</div>
 </div>
 
 
 <div class="form-group">
 <label class="control-label">Job Tags <span>(optional)</span></label>
- <select class="js-example-basic-multiple form-control" name="states[]" multiple="multiple">
+ <select class="js-example-basic-multiple form-control" name="tags[]" multiple="multiple">
   <option value="AL">Alabama</option>
   <option value="WY">Wyoming</option>
   <option value="WY">Wyoming</option>
@@ -121,8 +123,9 @@
 </div>
 
 <div class="form-group">
+  <div id="picker"></div>
 <label class="control-label">Closing Date <span>(optional)</span></label>
-<input type="text" name="deadline" class="form-control" placeholder="yyyy-mm-dd">
+<input type="text" id="demo" name="deadline" class="form-control" placeholder="yyyy-mm-dd">
 </div>
 
 <!-- <div class="divider">
@@ -162,6 +165,19 @@
 
 
 @section('js')
+
+
+  <script src="https://www.cssscript.com/demo/window-date-time-picker/dist/js/window-date-picker.js"></script>
+
+
+  <script type="text/javascript">
+  const picker = new WindowDatePicker({
+    el: '#picker',
+    toggleEl: '#demo',
+    inputEl: '#demo',
+    type: 'DATE'
+  });
+  </script>
 	
 
   <script src="{{url('/js/select2.min.js')}}"></script>
@@ -169,6 +185,12 @@
   <script type="text/javascript">
 
     $('.js-example-basic-multiple').select2();
+
+  </script>
+
+    <script type="text/javascript">
+
+    $('.js-example-basic-multiple1').select2();
 
   </script>
 
