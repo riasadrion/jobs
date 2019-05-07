@@ -96,21 +96,6 @@
 </div>
 
 
-<div class="form-group">
-<<<<<<< HEAD
-<label class="control-label">Job Tags <span>(optional)</span></label>
- <select class="js-example-basic-multiple form-control" name="tags[]" multiple="multiple">
-=======
- <select class="select2-multi form-control" name="states[]" multiple="multiple">
->>>>>>> dcd065f54b7d8ccfd3a6954b35e048e1a5b19c44
-  <option value="AL">Alabama</option>
-  <option value="WY">Wyoming</option>
-  <option value="WY">Wyoming</option>
-  <option value="WY">Wyoming</option>
-  <option value="WY">Wyoming</option>
-  <option value="WY">Wyoming</option>
-</select>
-</div>
 
 
 <div class="form-group">
