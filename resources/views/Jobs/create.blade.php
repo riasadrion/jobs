@@ -3,7 +3,7 @@
 
 @section('css')
 	
-	<link href="{{url('/css/select2.min.css')}}" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6/css/select2.min.css" rel="stylesheet" />
 
 
 
@@ -97,8 +97,12 @@
 
 
 <div class="form-group">
+<<<<<<< HEAD
 <label class="control-label">Job Tags <span>(optional)</span></label>
  <select class="js-example-basic-multiple form-control" name="tags[]" multiple="multiple">
+=======
+ <select class="select2-multi form-control" name="states[]" multiple="multiple">
+>>>>>>> dcd065f54b7d8ccfd3a6954b35e048e1a5b19c44
   <option value="AL">Alabama</option>
   <option value="WY">Wyoming</option>
   <option value="WY">Wyoming</option>
@@ -180,13 +184,7 @@
   </script>
 	
 
-  <script src="{{url('/js/select2.min.js')}}"></script>
 
-  <script type="text/javascript">
-
-    $('.js-example-basic-multiple').select2();
-
-  </script>
 
     <script type="text/javascript">
 
