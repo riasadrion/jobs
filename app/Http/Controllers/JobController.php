@@ -46,20 +46,19 @@ class JobController extends Controller
         $job = new Job();
 
         $job->title = request('title');
-        $job->employer_id = request('employer_id');
-        $job->category_id = request('category_id');
-        $job->type = request('type');
-        $job->tag = request('tag');
         $job->location_id = request('location_id');
+        $job->employer_id = request('employer_id');
+        $job->type = request('type');
+        $job->category_id = request('category_id');
         $job->description = request('description');
-        $job->deadline = request('deadline');
         $job->custom_url = request('custom_url');
+        $job->deadline = request('deadline');
 
 
 
         $job->save();
 
-        return redirect("/");
+        return redirect("/jobs/create")->with('success','Job created successfully!');
     }
 
     /**
