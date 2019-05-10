@@ -11,6 +11,6 @@ class Category extends Model
 
     public function jobs(){
 
-            return $this->hasMany('App\Job');
+            return $this->belongToMany('App\Job');
         }
 }

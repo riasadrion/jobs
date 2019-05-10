@@ -9,8 +9,8 @@ class Job extends Model
     //
 
 
-    public function category(){
+    public function categories(){
 
-    	return $this->belongsTo('App\Category');
+    	return $this->belongsToMany('App\Category');
     }
 }
