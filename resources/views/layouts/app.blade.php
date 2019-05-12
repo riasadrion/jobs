@@ -185,11 +185,8 @@ Contact
 <div class="loader" id="loader-1"></div>
 </div>
 
- <script src="{{url('/')}}/js/jquery-min.js"></script>
+<script src="{{url('/')}}/js/jquery-min.js"></script>
   
-
-@yield('js')
-
 <script src="{{url('/')}}/js/app.js"></script>
 <script src="{{url('/')}}/js/popper.min.js"></script>
 <script src="{{url('/')}}/js/bootstrap.min.js"></script>
@@ -200,5 +197,9 @@ Contact
 <script src="{{url('/')}}/js/form-validator.min.js"></script>
 <script src="{{url('/')}}/js/contact-form-script.js"></script>
 <script src="{{url('/')}}/js/main.js"></script>
+
+@yield('js')
+
+
 </body>
 </html>
