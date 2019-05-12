@@ -87,12 +87,9 @@
       <div class="form-group">
       <label class="control-label">Job Categories <span>(optional)</span></label>
       <select class="js-example-basic-multiple1 form-control dropdown-product selectpicker" name="category_id" multiple="multiple">
-        <option value="1">Alabama</option>
-        <option value="1">Wyoming</option>
-        <option value="1">Wyoming</option>
-        <option value="1">Wyoming</option>
-        <option value="1">Wyoming</option>
-        <option value="1">Wyoming</option>
+        @foreach($categories as $category)
+        <option value="{{$category->id}}">{{$category->name}}</option>
+        @endforeach
       </select>
       </div>
 
