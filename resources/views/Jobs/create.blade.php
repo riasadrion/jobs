@@ -3,11 +3,12 @@
 
 @section('css')
 	
-  <link href="{{url('/')}}/css/select2.min.css" rel="stylesheet" />
+<link href="{{url('/')}}/css/select2.min.css" rel="stylesheet" />
+
+
+
 
   <link rel="stylesheet" href="{{url('/')}}/css/window-date-picker.css">
-
-  <link rel="stylesheet" href="{{url('/')}}/css/summernote.css">
 
 
 
@@ -100,11 +101,12 @@
 
       <div class="form-group">
       <label class="control-label">Description</label>
-      
+      </div>
+
       <section id="editor">
-      <textarea id="summernote" name="description"></textarea>
+      <textarea name="description" style="width: 100%;height: 100px" required>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quia aut modi fugit, ratione saepe perferendis odio optio repellat dolorum voluptas excepturi possimus similique veritatis nobis. Provident cupiditate delectus, optio?</textarea>
       </section>
-     </div>
+
       <div class="form-group">
       <label class="control-label">Application URL</label>
       <input type="text" name="custom_url" class="form-control" placeholder="Enter an email address or website URL">
@@ -157,7 +159,6 @@
 
   <script src="{{url('/')}}/js/window-date-picker.js"></script>
 
- 
 
   <script type="text/javascript">
   const picker = new WindowDatePicker({
@@ -177,16 +178,5 @@
     $('.js-example-basic-multiple1').select2();
 
   </script>
-
-  <script src="{{url('/')}}/js/summernote.js"></script>
-
-  <script>
-      $('#summernote').summernote({
-        height: 250,                 // set editor height
-        minHeight: null,             // set minimum height of editor
-        maxHeight: null,             // set maximum height of editor
-        focus: false                  // set focus to editable area after initializing summernote
-      });
-    </script>
 
 @endsection
