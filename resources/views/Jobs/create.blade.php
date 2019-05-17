@@ -63,8 +63,10 @@
   </div>
 
   <div class="form-group">
-  <label class="control-label">Job Categories <span>(optional)</span></label>
-  <select class="js-example-basic-multiple1 form-control dropdown-product selectpicker" name="category_id" multiple="multiple">
+  <label class="control-label">Job Categories</span></label>
+  <select class="js-example-basic-multiple1 form-control dropdown-product selectpicker" name="category_id" multiple="multiple" required>
+    <option value="1">Full Time</option>
+    <option value="3">Part Time</option>
     @foreach($categories as $category)
     <option value="{{$category->id}}">{{$category->name}}</option>
     @endforeach

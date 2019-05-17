@@ -24,11 +24,12 @@
 <div class="right-sideabr">
 <h4>Manage Account</h4>
 <ul class="list-item">
-<li><a href="/jobs/create">Create a Job</a></li>
+<li><a class="{{ (request()->is('dashboard')) ? 'active' : '' }}" href="/dashboard">Dashboard</a></li>
+<li><a class="{{ (request()->is('jobs/create')) ? 'active' : '' }}" href="/jobs/create">Create a Job</a></li>
+<li><a class="{{ (request()->is('jobs')) ? 'active' : '' }}" href="/jobs">Manage Jobs</a></li>
 <li><a href="#">My Resume</a></li>
-<li><a href="bookmarked.html">Bookmarked Jobs</a></li>
+<li><a class="{{ (request()->is('admin/cities')) ? 'active' : '' }}" href="bookmarked.html">Bookmarked Jobs</a></li>
 <li><a href="notifications.html">Notifications <span class="notinumber">2</span></a></li>
-<li><a class="active" href="job-alerts.html">Manage Jobs</a></li>
 <li><a href="manage-applications.html">Manage Applications</a></li>
 <li><a href="change-password.html">Change Password</a></li>
 <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
