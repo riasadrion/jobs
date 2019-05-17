@@ -1,5 +1,18 @@
 @extends('layouts.app')
 
+
+@section('css')
+
+  <style>
+	body:not(.modal-open){
+	  padding-right: 0px !important;
+	}
+  </style>
+
+@endsection
+
+
+
 @section('content')
 
 </header>
@@ -27,6 +40,7 @@
 <li><a class="{{ (request()->is('dashboard')) ? 'active' : '' }}" href="/dashboard">Dashboard</a></li>
 <li><a class="{{ (request()->is('jobs/create')) ? 'active' : '' }}" href="/jobs/create">Create a Job</a></li>
 <li><a class="{{ (request()->is('jobs')) ? 'active' : '' }}" href="/jobs">Manage Jobs</a></li>
+<li><a class="{{ (request()->is('categories')) ? 'active' : '' }}" href="/categories">Manage Categories</a></li>
 <li><a href="#">My Resume</a></li>
 <li><a class="{{ (request()->is('admin/cities')) ? 'active' : '' }}" href="bookmarked.html">Bookmarked Jobs</a></li>
 <li><a href="notifications.html">Notifications <span class="notinumber">2</span></a></li>
@@ -47,4 +61,10 @@
 </div>
 </div>
 </div>
+@endsection
+
+@section('js')
+
+@yield('dashboard-js')
+
 @endsection

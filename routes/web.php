@@ -13,6 +13,7 @@
 
 Route::get('/', 'PagesController@index');
 Route::resource('jobs', 'JobController');
+Route::resource('categories', 'CategoryController');
 
 Auth::routes();
 

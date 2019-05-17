@@ -1,9 +1,12 @@
 @extends('layouts.dashboard')
 
+@section('title', 'Manage Jobs')
+
+@section('page-title', 'Manage Jobs')
+
 @section('dashboard-content')
 
   <div class="job-alerts-item candidates">
-  <h3 class="alerts-title">Manage Jobs</h3>
   <div class="alerts-list">
   <div class="row">
   <div class="col-lg-3 col-md-3 col-xs-12">
