@@ -77,7 +77,7 @@
       <div class="modal-body">
                  @csrf
                <div class="form-group">
-                 <input id="id" type="hidden" name="id">
+                 <input id="id" type="hidden" name="id" >
                  <input id="title" type="text" name="name" class="form-control" placeholder="Enter Name" required>
                </div>
                
