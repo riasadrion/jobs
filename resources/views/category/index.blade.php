@@ -29,7 +29,7 @@
      			<td>{{$cat->name}}</td>
           <td>
             <a data-id="{{$cat->id}}" data-title="{{$cat->name}}" data-toggle="modal" data-target="#edit" style="font-size: 20px; color: #0049d3" href="/categories/{{$cat->id}}/edit"><i class="lni-pencil-alt"></i></a>
-            <a style="font-size: 20px; color: #f89872" data-toggle="modal" data-did="{{$cat->id}}" data-target="#delete" href=""><i class="lni-trash"></i></a>
+            <a style="font-size: 20px; color: #f89872" data-toggle="modal" data-id="{{$cat->id}}" data-target="#delete" href=""><i class="lni-trash"></i></a>
           </td>
      		</tr>
         <?php $i++; ?> 
@@ -77,7 +77,6 @@
       <div class="modal-body">
                  @csrf
                <div class="form-group">
-                 <input id="id" type="hidden" name="id" >
                  <input id="title" type="text" name="name" class="form-control" placeholder="Enter Name" required>
                </div>
                
@@ -134,7 +133,6 @@
   var title = button.data('title')
   
   var modal = $(this)
-  modal.find('.modal-body #id').val(id)
   modal.find('.modal-body #title').val(title)
   $("#form1").attr('action', 'categories/'+id);
 });
@@ -142,9 +140,9 @@
 
     $('#delete').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) 
-    var did = button.data('did')
+    var id = button.data('id')
     var modal = $(this)
-    $("#form2").attr('action', 'categories/'+did);
+    $("#form2").attr('action', 'categories/'+id);
   });
 </script>
 

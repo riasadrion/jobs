@@ -76,11 +76,10 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        $cat = Category::where("id", $request->input('id'))->first();
 
-        $cat->name = $request->input('name');
+        $category->name = $request->input('name');
 
-        $cat->save();
+        $category->save();
 
         return back();
     }
