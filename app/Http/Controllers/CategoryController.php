@@ -93,11 +93,10 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        $cat = Category::where("id", $request->input('did'))->first();
 
-        $cat->delete();
+      $category->delete();
 
-        return back();
+      return back();
 
     }
 }

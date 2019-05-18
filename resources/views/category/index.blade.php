@@ -109,7 +109,7 @@
                 <div class="modal-body">
                  @csrf
                <div class="form-group">
-                 <input id="did" type="hidden" name="did" >
+                
                </div>
                
             
@@ -144,7 +144,6 @@
     var button = $(event.relatedTarget) 
     var did = button.data('did')
     var modal = $(this)
-    modal.find('.modal-body #id').val(did)
     $("#form2").attr('action', 'categories/'+did);
   });
 </script>
