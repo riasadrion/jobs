@@ -79,7 +79,7 @@ class CategoryController extends Controller
         $cat = Category::where("id", $request->input('id'))->first();
 
         $cat->name = $request->input('name');
-        
+
         $cat->save();
 
         return back();
@@ -93,6 +93,11 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $cat = Category::where("id", $request->input('did'))->first();
+
+        $cat->delete();
+
+        return back();
+
     }
 }
