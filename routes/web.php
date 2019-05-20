@@ -12,8 +12,10 @@
 */
 
 Route::get('/', 'PagesController@index');
+Route::post('/cities/store', 'LocationController@citystore');
 Route::resource('jobs', 'JobController');
 Route::resource('categories', 'CategoryController');
+Route::resource('locations', 'LocationController');
 
 Auth::routes();
 
