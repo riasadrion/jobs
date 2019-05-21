@@ -96,6 +96,16 @@ class LocationController extends Controller
         $location->save();
 
         return back();
+    }   
+
+     public function cityupdate(Request $request, City $city)
+    {
+
+        $city->name = $request->input('name');
+
+        $city->save();
+
+        return back();
     }
 
     /**
@@ -107,6 +117,13 @@ class LocationController extends Controller
     public function destroy(Location $location)
     {
         $location->delete();
+
+        return back();
+    }
+
+    public function citydestroy(City $city)
+    {
+        $city->delete();
 
         return back();
     }
