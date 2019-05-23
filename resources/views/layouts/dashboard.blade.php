@@ -4,9 +4,8 @@
 @section('css')
 
   <style>
-	body:not(.modal-open){
-	  padding-right: 0px !important;
-	}
+	body { padding-right: 0 !important }
+	nav {padding-right: 0 !important }
   </style>
 
 @endsection
@@ -41,6 +40,7 @@
 <li><a class="{{ (request()->is('jobs/create')) ? 'active' : '' }}" href="/jobs/create">Create a Job</a></li>
 <li><a class="{{ (request()->is('jobs')) ? 'active' : '' }}" href="/jobs">Manage Jobs</a></li>
 <li><a class="{{ (request()->is('categories')) ? 'active' : '' }}" href="/categories">Manage Categories</a></li>
+<li><a class="{{ (request()->is('locations')) ? 'active' : '' }}" href="/locations">Manage Locations</a></li>
 <li><a href="#">My Resume</a></li>
 <li><a class="{{ (request()->is('admin/cities')) ? 'active' : '' }}" href="bookmarked.html">Bookmarked Jobs</a></li>
 <li><a href="notifications.html">Notifications <span class="notinumber">2</span></a></li>

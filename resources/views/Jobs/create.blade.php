@@ -4,7 +4,7 @@
 
 @section('css')
 	
-<link href="{{url('/')}}/css/select2.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="{{url('/')}}/css/window-date-picker.css">
 <link rel="stylesheet" href="{{url('/')}}/css/summernote.css">
 
@@ -24,17 +24,7 @@
   <input type="text" name="title" class="form-control" placeholder="Write job title" required>
   </div>
 
-  <div class="form-group">
-    <label class="control-label">Select location</label>
-      <div class="search-category-container">
-        <label class="styled-select">
-        <select name="location_id" class="dropdown-product selectpicker" required>
-          <option value="1">Dhaka</option>
-          <option value="2">Gazipur</option>
-        </select>
-        </label>
-      </div>
-  </div>
+
 
 
   <div class="form-group">
@@ -74,7 +64,18 @@
   </div>
 
 
-
+  <div class="form-group">
+  <label class="control-label">Job Location</span></label>
+  <select class="js-example-basic-multiple2 form-control dropdown-product selectpicker" name="category_id" required>
+    <option value="">Select Location</option>
+    @foreach($locations as $location)
+      <option disabled><strong style="color: black !important">{{$location->name}}</strong></option>
+      @foreach($location->cities as $city)
+      <option value="{{$city->id}}">&nbsp;&nbsp;- {{$city->name}}</option>
+      @endforeach
+    @endforeach
+  </select>
+  </div>
 
   <div class="form-group">
   <label class="control-label">Description</label>
@@ -142,12 +143,13 @@
   </script>
 	
 
-  <script src="{{url('/')}}/js/select2.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
 
 
     <script type="text/javascript">
 
     $('.js-example-basic-multiple1').select2();
+    $('.js-example-basic-multiple2').select2();
 
   </script>
 

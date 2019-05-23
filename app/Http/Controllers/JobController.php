@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Job;
 use App\Category;
+use App\Location;
 use Illuminate\Http\Request;
 
 class JobController extends Controller
@@ -33,7 +34,8 @@ class JobController extends Controller
     public function create()
     {   
         $categories = Category::all();
-        return view('jobs.create', compact('categories'));
+        $locations = Location::all();
+        return view('jobs.create', compact('categories','locations'));
     }
 
     /**

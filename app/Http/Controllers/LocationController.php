@@ -47,18 +47,35 @@ class LocationController extends Controller
         return redirect("/locations")->with('success','State created successfully!');
     }
 
+    
 
+//  city operations  ---------------------------------------------------------------------
     public function citystore(Request $request)
     {
         $city = new City();
 
-        $city->location_id = request('loc_id');
-        $city->name = request('name');
+        $city->location_id = $request->input('loc_id');
+        $city->name = $request->input('name');
 
         $city->save();
 
         return redirect("/locations")->with('success','City created successfully!');
+    }     
+
+
+    public function cityupdate(Request $request, City $city)
+    {
+
+        $city->location_id = $request->input('state');
+        $city->name = $request->input('name');
+
+        $city->save();
+
+        return back();
     }
+
+
+    //  city operations  ---------------------------------------------------------------------
 
     /**
      * Display the specified resource.
@@ -98,15 +115,7 @@ class LocationController extends Controller
         return back();
     }   
 
-     public function cityupdate(Request $request, City $city)
-    {
 
-        $city->name = $request->input('name');
-
-        $city->save();
-
-        return back();
-    }
 
     /**
      * Remove the specified resource from storage.
