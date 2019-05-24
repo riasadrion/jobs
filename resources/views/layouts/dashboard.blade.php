@@ -40,6 +40,7 @@
 <li><a class="{{ (request()->is('jobs/create')) ? 'active' : '' }}" href="/jobs/create">Create a Job</a></li>
 <li><a class="{{ (request()->is('jobs')) ? 'active' : '' }}" href="/jobs">Manage Jobs</a></li>
 <li><a class="{{ (request()->is('categories')) ? 'active' : '' }}" href="/categories">Manage Categories</a></li>
+<li><a class="{{ (request()->is('types')) ? 'active' : '' }}" href="/types">Manage Types</a></li>
 <li><a class="{{ (request()->is('locations')) ? 'active' : '' }}" href="/locations">Manage Locations</a></li>
 <li><a href="#">My Resume</a></li>
 <li><a class="{{ (request()->is('admin/cities')) ? 'active' : '' }}" href="bookmarked.html">Bookmarked Jobs</a></li>

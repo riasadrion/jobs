@@ -10,4 +10,9 @@ class City extends Model
 
     	return $this->belongsTo('\App\Location');
     }
+
+    public function jobs(){
+
+            return $this->hasMany('App\Job');
+        }
 }

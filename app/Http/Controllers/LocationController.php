@@ -74,6 +74,13 @@ class LocationController extends Controller
         return back();
     }
 
+    
+    public function citydestroy(City $city)
+    {
+        $city->delete();
+
+        return back();
+    }
 
     //  city operations  ---------------------------------------------------------------------
 
@@ -130,10 +137,5 @@ class LocationController extends Controller
         return back();
     }
 
-    public function citydestroy(City $city)
-    {
-        $city->delete();
 
-        return back();
-    }
 }

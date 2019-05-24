@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateJobCategoryTable extends Migration
+class CreateTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,9 @@ class CreateJobCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('job_category', function (Blueprint $table) {
+        Schema::create('types', function (Blueprint $table) {
             $table->increments('id');
-
-            $table->integer('job_id')->unsigned();
-            $table->foreign('job_id')->references('id')->on('jobs');
-
-            $table->integer('category_id')->unsigned();
-            $table->foreign('category_id')->references('id')->on('categories');
-            
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -33,6 +27,6 @@ class CreateJobCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('job_category');
+        Schema::dropIfExists('types');
     }
 }

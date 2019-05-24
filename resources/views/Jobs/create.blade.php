@@ -8,6 +8,36 @@
 <link rel="stylesheet" href="{{url('/')}}/css/window-date-picker.css">
 <link rel="stylesheet" href="{{url('/')}}/css/summernote.css">
 
+<style>
+  .select2-container--default .select2-selection--single {
+    border: 1px solid #cecece;
+    border-radius: 27px;    outline: none;
+}
+.select2-container .select2-selection--single {
+
+    height: 46px;
+   
+}
+.select2-container .select2-selection--single .select2-selection__rendered {
+
+    padding-left: 22px;
+    padding-right: 20px;
+    padding-top: 8px;  
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+    border-width: 6px 3px 0 3px;
+    left: -5%;
+    margin-left: -4px;
+    margin-top: 6px;
+    position: absolute;
+    top: 50%;
+    
+}
+
+
+</style>
+
 @endsection
 
 @section('page-title', 'Post A Job')
@@ -41,22 +71,18 @@
 
 
   <div class="form-group">
-  <label class="control-label">Select Type</label>
-    <div class="search-category-container">
-    <label class="styled-select">
-      <select name="type" class="dropdown-product selectpicker">
-        <option value="1">Full Time</option>
-        <option value="3">Part Time</option>
-      </select>
-    </label>
-    </div>
+  <label class="control-label">Job Type</span></label>
+  <select class="js-example-basic-multiple2 form-control dropdown-product selectpicker" name="type_id" required>
+    @foreach($types as $type)
+    <option value="{{$type->id}}">{{$type->name}}</option>
+    @endforeach
+
+  </select>
   </div>
 
   <div class="form-group">
   <label class="control-label">Job Categories</span></label>
-  <select class="js-example-basic-multiple1 form-control dropdown-product selectpicker" name="category_id" multiple="multiple" required>
-    <option value="1">Full Time</option>
-    <option value="3">Part Time</option>
+  <select class="js-example-basic-multiple1 form-control dropdown-product selectpicker" name="category_id" required>
     @foreach($categories as $category)
     <option value="{{$category->id}}">{{$category->name}}</option>
     @endforeach
@@ -66,10 +92,10 @@
 
   <div class="form-group">
   <label class="control-label">Job Location</span></label>
-  <select class="js-example-basic-multiple2 form-control dropdown-product selectpicker" name="category_id" required>
+  <select class="js-example-basic-multiple2 form-control dropdown-product selectpicker" name="city_id" required>
     <option value="">Select Location</option>
     @foreach($locations as $location)
-      <option disabled><strong style="color: black !important">{{$location->name}}</strong></option>
+      <option disabled>{{$location->name}}</option>
       @foreach($location->cities as $city)
       <option value="{{$city->id}}">&nbsp;&nbsp;- {{$city->name}}</option>
       @endforeach
