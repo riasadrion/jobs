@@ -38,9 +38,9 @@ class User extends Authenticatable
     ];
 
 
-    public function companies(){
+    public function company(){
 
-        return $this->hasMany('\App\Company');
+        return $this->hasOne('\App\Company');
     
     }
 

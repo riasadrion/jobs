@@ -1,51 +1,38 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Company List')
+@section('title', 'Company Profile')
 
-@section('page-title', 'Company List')
+@section('page-title', 'Company Profile')
 
 
 
 @section('dashboard-content')
    <div class="row">
-   <div class="col-md-8">
+   <div class="col-md-12">
     <div class="post-job box">
+      @include('error')
     <h3 class="job-title">Companies <a class="badge badge-pill badge-success float-right" data-toggle="modal" data-target="#addcompany" href="">Add New</a></h3>
-      @if(count($companies)>0)
-     <table class="table">
-      <tbody>
-        <tr>
-          <td>#</td>
-          <td>Name</td>
-          <td>Options</td>
-        </tr>
-      <?php $i = 1 - $companies->perPage(); $skipped = $companies->currentPage() * $companies->perPage(); ?>
-      @foreach($companies as $company)
+    @if(!empty($company))
+     
+   <div class="inner-box my-resume">
+   <div class="author-resume">
+   <div class="thumb">
+   <img src="assets/img/resume/img-1.png" alt="">
+   </div>
+   <div class="author-info">
+   <h3>{{$company->name}}</h3>
+   <p class="sub-title">UI/UX Designer</p>
+   <p><span class="address"><i class="lni-map-marker"></i>Mahattan, NYC, USA</span> <span><i class="ti-phone"></i>(+01) 211-123-5678</span></p>
+   <div class="social-link">
+   <a href="#" class="Twitter"><i class="lni-twitter-filled"></i></a>
+   <a href="#" class="facebook"><i class="lni-facebook-filled"></i></a>
+   <a href="#" class="google"><i class="lni-google-plus"></i></a>
+   <a href="#" class="linkedin"><i class="lni-linkedin-fill"></i></a>
+   </div>
+   </div>
+   </div>
+   </div>
 
-        <tr>
-          <td>
-            {{ $skipped + $i }}
-         </td>
-          <td>{{$type->company}}</td>
-          <td>
-
-
-
-            <a data-id="{{$company->id}}" href="#" data-name="{{$company->name}}" data-toggle="modal" data-target="#editcompany" style="font-size: 20px; color: #0049d3"><i class="lni-pencil-alt"></i></a>
-
-
-            <a style="font-size: 20px; color: #f89872" data-toggle="modal" data-id="{{$company->id}}" data-target="#deletecompany" href=""><i class="lni-trash"></i></a>
-          </td>
-        </tr>
-        <?php $i++; ?> 
-      @endforeach
-
-        
-
-
-      </tbody>
-     </table>
-        {{$companies->links('vendor.pagination.bootstrap-4')}}
     @else
      No cities found !
     @endif
@@ -68,7 +55,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form id="form3" class="form-ad" action="/companies/store" method="POST">
+      <form id="form3" class="form-ad" action="/companies" method="POST" enctype="multipart/form-data">
       <div class="modal-body">
                  @csrf
                <div class="form-group">
@@ -83,10 +70,13 @@
                  <input id="address" type="text" name="address" class="form-control" placeholder="Address Line" >
                </div>
 
-               <div class="custom-file mb-3">
-               <input type="file" class="custom-file-input" id="validatedCustomFile" >
-               <label class="custom-file-label form-control" for="validatedCustomFile">Choose logo...</label>
-               <div class="invalid-feedback">Example invalid custom file feedback</div>
+              <div class="form-group">
+              <input id="address" type="text" name="web" class="form-control" placeholder="Website" >
+              </div>
+
+               <div class="form-group">
+                <label for="">Choose logo</label><br>
+               <input type="file" class="" name="logo" id="validatedCustomFile" >
                </div>
                
             
@@ -94,14 +84,14 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
-        <input type="submit"  name="" class="btn btn-primary" value="Save changes">
+        <input type="submit"  name="" class="btn btn-primary" value="Save">
       </div> 
     </form>
     </div>
   </div>
 </div>
 
-{{-- Edit type --}}
+{{-- Edit Company --}}
 <div class="modal fade" id="edittype" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -111,13 +101,30 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form id="form4" class="form-ad" action="/types/" method="POST">
+      <form id="form4" class="form-ad" action="/companies" method="POST">
       <div class="modal-body">
                  @csrf
                <div class="form-group">
-                 <input id="id" type="hidden" name="id" required>
-                 <input id="name" type="text" name="name" class="form-control" placeholder="Enter Name" required>
+                 <input id="name" type="text" name="name" class="form-control" placeholder="Company Name" required>
                </div>
+
+               <div class="form-group">
+                 <input id="tagline" type="text" name="tagline" class="form-control" placeholder="Company Tagline" >
+               </div>
+
+               <div class="form-group">
+                 <input id="address" type="text" name="address" class="form-control" placeholder="Address Line" >
+               </div>
+
+              <div class="form-group">
+              <input id="web" type="text" name="web" class="form-control" placeholder="Website" >
+              </div>
+
+               <div class="form-group">
+                <label for="">Choose logo</label><br>
+               <input type="file" class="" name="logo" id="validatedCustomFile" >
+               </div>
+
                
             
       </div>

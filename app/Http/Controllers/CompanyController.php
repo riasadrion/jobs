@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Company;
+use App\User;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -12,13 +13,22 @@ class CompanyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
+
     public function index()
     {
-        $companies = Company::orderBy('id', 'desc')->paginate(5);
+        
+        $uid = auth()->user()->id;
 
-     //   dump($companies);
+        $company = Company::where('user_id', '=', $uid)->first();
 
-        return view('dashboard.company', compact('companies'));
+        return view('dashboard.company')->with('company', $company);
     }
 
     /**
@@ -39,14 +49,48 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        $company = new Company;
+        
 
         $request->validate([
-            'name' => 'required|min:3'
+            'name' => 'required|min:3',
+            'logo' => 'image|nullable|max:200'
         ]);
     
+        if($request->hasFile('logo')){
+
+            //Get filename with the extension
+            $fileNameWithExt = $request->file('logo')->getClientOriginalName();
+
+            //Get just extension
+            $extension = $request->file('logo')->getClientOriginalExtension();
+
+            //file name to store
+            $fileNameToStore = time().'.'.$extension;
+
+            //Upload
+            $path = $request->file('logo')->storeAs('public/company_logos', $fileNameToStore);
+
+        }else{
+            $fileNameToStore = 'noimage.jpg';
+        }
+
+
+        $company = new Company;
 
         $company->name = request('name');
+        $company->tagline = request('tagline');
+        $company->address = request('address');
+        $company->web = request('web');
+        $company->user_id = auth()->user()->id;
+        $company->logo = $fileNameToStore;
+
+
+        $company->save();
+
+        return redirect('/companies')->with('success', 'Company saved !');
+
+
+
     }
 
     /**
