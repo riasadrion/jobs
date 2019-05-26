@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
+use App\Company;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class CompanyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,11 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::orderBy('id', 'desc')->paginate(6);
-        return view('dashboard.category', compact('categories'));
+        $companies = Company::orderBy('id', 'desc')->paginate(5);
+
+     //   dump($companies);
+
+        return view('dashboard.company', compact('companies'));
     }
 
     /**
@@ -36,22 +39,23 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $cat = new Category();
+        $company = new Company;
 
-        $cat->name = request('name');
+        $request->validate([
+            'name' => 'required|min:3'
+        ]);
+    
 
-        $cat->save();
-
-        return redirect("/categories")->with('success','Category created successfully!');
+        $company->name = request('name');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  \App\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Company $company)
     {
         //
     }
@@ -59,10 +63,10 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  \App\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Company $company)
     {
         //
     }
@@ -71,31 +75,22 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Category  $category
+     * @param  \App\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Company $company)
     {
-
-        $category->name = $request->input('name');
-
-        $category->save();
-
-        return back();
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Category  $category
+     * @param  \App\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Company $company)
     {
-
-      $category->delete();
-
-      return back();
-
+        //
     }
 }

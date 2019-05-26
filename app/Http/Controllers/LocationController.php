@@ -17,7 +17,7 @@ class LocationController extends Controller
     {
        $locations = Location::orderBy('id', 'desc')->paginate(5);
        $cities = City::orderBy('id', 'desc')->paginate(5);
-       return view('location.index', compact('locations', 'cities'));
+       return view('dashboard.location', compact('locations', 'cities'));
     }
 
     /**

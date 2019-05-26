@@ -39,6 +39,7 @@
 <li><a class="{{ (request()->is('dashboard')) ? 'active' : '' }}" href="/dashboard">Dashboard</a></li>
 <li><a class="{{ (request()->is('jobs/create')) ? 'active' : '' }}" href="/jobs/create">Create a Job</a></li>
 <li><a class="{{ (request()->is('jobs')) ? 'active' : '' }}" href="/jobs">Manage Jobs</a></li>
+<li><a class="{{ (request()->is('Companies')) ? 'active' : '' }}" href="/companies">Manage Companies</a></li>
 <li><a class="{{ (request()->is('categories')) ? 'active' : '' }}" href="/categories">Manage Categories</a></li>
 <li><a class="{{ (request()->is('types')) ? 'active' : '' }}" href="/types">Manage Types</a></li>
 <li><a class="{{ (request()->is('locations')) ? 'active' : '' }}" href="/locations">Manage Locations</a></li>
@@ -54,6 +55,16 @@
 </div>
 
 <div class="col-lg-8 col-md-8 col-xs-12">
+  @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 
   @yield('dashboard-content')
 

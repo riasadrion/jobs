@@ -24,6 +24,12 @@ Route::delete('/cities/{city}/delete', 'LocationController@citydestroy');
 //Job Routes
 Route::resource('jobs', 'JobController');
 
+
+
+//Company Routes
+Route::resource('companies', 'CompanyController');
+
+
 //Category Routes
 Route::resource('categories', 'CategoryController');
 

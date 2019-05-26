@@ -119,7 +119,7 @@ class JobController extends Controller
 
             $types = Type::orderBy('id', 'desc')->paginate(5);
 
-            return view ('Jobs.types', compact('types'));
+            return view ('dashboard.type', compact('types'));
         }
 
 

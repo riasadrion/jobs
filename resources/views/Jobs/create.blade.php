@@ -121,7 +121,7 @@
   <input type="text" id="demo" name="deadline" class="form-control" placeholder="dd/mm/yyyy" autocomplete="off">
   </div>
 
-  <!-- <div class="divider">
+<!--    <div class="divider">
   <h3 class="job-title">Company Details</h3>
   </div>
   <div class="form-group">
@@ -136,15 +136,11 @@
   <label class="control-label">Tagline <span>(optional)</span></label>
   <input type="text" class="form-control" placeholder="Briefly describe your company">
   </div>
-  <div class="form-group">
-  <label class="control-label">Tagline <span>(optional)</span></label>
-  <input type="text" class="form-control" placeholder="Briefly describe your company">
-  </div> 
   <div class="custom-file mb-3">
   <input type="file" class="custom-file-input" id="validatedCustomFile" required>
   <label class="custom-file-label form-control" for="validatedCustomFile">Choose file...</label>
   <div class="invalid-feedback">Example invalid custom file feedback</div>
-  </div>-->
+  </div> -->
 
   <input type="submit"  name="" class="btn btn-common" value="Submit Your Job">
   </form>
