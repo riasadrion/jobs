@@ -71,9 +71,9 @@ class CompanyController extends Controller
             $path = $request->file('logo')->storeAs('public/company_logos', $fileNameToStore);
 
         }else{
+
             $fileNameToStore = 'noimage.jpg';
         }
-
 
         $company = new Company;
 
@@ -84,10 +84,22 @@ class CompanyController extends Controller
         $company->user_id = auth()->user()->id;
         $company->logo = $fileNameToStore;
 
+        
+       
+       // Employer cannot add more than one company. 
+       $uid = auth()->user()->id;
+       $checkifexists = Company::where('user_id', '=', $uid)->first();
+
+        if(!empty($checkifexists)){
+         
+         return redirect('/companies')->with('warning', 'Access Denied !');
+
+        }else{
 
         $company->save();
-
         return redirect('/companies')->with('success', 'Company saved !');
+        
+        }
 
 
 
@@ -124,7 +136,27 @@ class CompanyController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        //
+      
+        
+
+        $request->validate([
+            'name' => 'required|min:3',
+            'logo' => 'image|nullable|max:200'
+        ]);
+
+        
+
+        $company->name = request('name');
+        $company->tagline = request('tagline');
+        $company->address = request('address');
+        $company->web = request('web');
+        $company->user_id = auth()->user()->id;
+        $company->logo = $fileNameToStore;
+
+        dd($company);
+
+        return redirect('/companies')->with('success', 'Company Profile Updated !');
+
     }
 
     /**
