@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Company;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CompanyController extends Controller
 {
@@ -58,21 +59,24 @@ class CompanyController extends Controller
     
         if($request->hasFile('logo')){
 
-            //Get filename with the extension
-            $fileNameWithExt = $request->file('logo')->getClientOriginalName();
+         //Get filename with the extension
+         $fullName = $request->file('logo')->getClientOriginalName();
 
-            //Get just extension
-            $extension = $request->file('logo')->getClientOriginalExtension();
+         //getting only the name without extension
+         $name = explode('.', $fullName)[0];
+
+         //Get just extension
+         $extension = $request->file('logo')->getClientOriginalExtension();
 
             //file name to store
-            $fileNameToStore = time().'.'.$extension;
+            $fileNameToStore = $name.'_'.time().'.'.$extension;
 
             //Upload
             $path = $request->file('logo')->storeAs('public/company_logos', $fileNameToStore);
 
         }else{
 
-            $fileNameToStore = 'noimage.jpg';
+            $fileNameToStore = 'noimage.png';
         }
 
         $company = new Company;
@@ -145,15 +149,48 @@ class CompanyController extends Controller
         ]);
 
         
+         if($request->hasFile('logo')){
+
+        //Deleting Old image
+        if($company->logo != 'noimage.png'){
+            Storage::delete('public/company_logos/'.$company->logo);
+        }
+
+         //Get filename with the extension
+         $fullName = $request->file('logo')->getClientOriginalName();
+
+         //getting only the name without extension
+         $name = explode('.', $fullName)[0];
+
+         //Get just extension
+         $extension = $request->file('logo')->getClientOriginalExtension();
+
+         //file name to store
+         $fileNameToStore = $name.'_'.time().'.'.$extension;
+
+         //Upload
+         $path = $request->file('logo')->storeAs('public/company_logos', $fileNameToStore);
+
+
+
+      }
+
 
         $company->name = request('name');
         $company->tagline = request('tagline');
         $company->address = request('address');
         $company->web = request('web');
         $company->user_id = auth()->user()->id;
+
+        if($request->hasFile('logo')){
+
+
+
         $company->logo = $fileNameToStore;
 
-        dd($company);
+        }
+        
+        $company->save();
 
         return redirect('/companies')->with('success', 'Company Profile Updated !');
 

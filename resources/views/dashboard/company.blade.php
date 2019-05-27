@@ -17,7 +17,7 @@
    <a class="badge badge-pill badge-success float-right" data-id="{{$company->id}}" data-name="{{$company->name}}" data-tagline="{{$company->tagline}}" data-address="{{$company->address}}" data-web="{{$company->web}}" data-logo="{{$company->logo}}" data-toggle="modal" data-target="#editcompany" href="">Update Profile</a>
      <div class="author-resume">
        <div class="thumb">
-       <img src="{{url('/')}}/storage/company_logos/{{$company->logo}}" alt="">
+       <img width="50" src="{{url('/')}}/storage/company_logos/{{$company->logo}}" alt="">
        </div>
          <div class="author-info">
          <h3>{{$company->name}}</h3>
@@ -103,7 +103,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form id="form4" class="form-ad" action="/companies" method="POST">
+      <form id="form4" class="form-ad" action="/companies" method="POST" enctype="multipart/form-data">
       <div class="modal-body">
                  @csrf
                  @method('PUT')
@@ -126,7 +126,7 @@
               <img id="showlogo" height="30" src="" alt=""><br>
               
                <div class="form-group">
-                <label for="">Choose new logo</label><br>
+                <label for="">Choose logo</label><br>
                <input type="file" class="" name="logo" id="validatedCustomFile" >
                </div>
 
