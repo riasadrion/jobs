@@ -23,8 +23,8 @@ class JobController extends Controller
 
     public function index()
     {
-        $jobs = Job::all();
-        return view('jobs.index');
+        $jobs = Job::orderBy('id', 'desc')->paginate(6);
+        return view('jobs.index')->with('jobs', $jobs);
     }
 
     /**
@@ -54,7 +54,7 @@ class JobController extends Controller
         $job->description = request('description');
         $job->custom_url = request('custom_url');
         $job->deadline = request('deadline');
-        $job->employer_id = request('employer_id');
+        $job->user_id = auth()->user()->id;
         $job->category_id = request('category_id');
         $job->type_id = request('type_id');
         $job->city_id = request('city_id');

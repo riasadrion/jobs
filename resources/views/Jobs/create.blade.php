@@ -55,21 +55,6 @@
   </div>
 
 
-
-
-  <div class="form-group">
-  <label class="control-label">Select Employer</label>
-    <div class="search-category-container">
-    <label class="styled-select">
-      <select name="employer_id" class="dropdown-product selectpicker" required>
-      <option value="1">H&M</option>
-      <option value="2">MASCO</option>
-      </select>
-    </label>
-    </div>
-  </div>
-
-
   <div class="form-group">
   <label class="control-label">Job Type</span></label>
   <select class="js-example-basic-multiple2 form-control dropdown-product selectpicker" name="type_id" required>
