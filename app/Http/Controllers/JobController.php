@@ -52,6 +52,8 @@ class JobController extends Controller
 
         $job->title = request('title');
         $job->description = request('description');
+        $job->salary = request('salary');
+        $job->map = request('map');
         $job->custom_url = request('custom_url');
         $job->deadline = request('deadline');
         $job->user_id = auth()->user()->id;
@@ -74,7 +76,7 @@ class JobController extends Controller
      */
     public function show(Job $job)
     {
-        
+        return view('jobs.details', compact('job'));
     }
 
     /**

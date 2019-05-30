@@ -19,6 +19,8 @@ class CreateJobsTable extends Migration
             $table->string('deadline')->nullable();
             $table->mediumtext('description');
             $table->string('custom_url')->nullable(); 
+            $table->string('salary')->nullable(); 
+            $table->mediumtext('map')->nullable(); 
             $table->integer('user_id');
             $table->integer('category_id');
             $table->string('type_id')->nullable(); //ex. part time, full time

@@ -30,7 +30,7 @@
    <div class="alerts-content">
    <div class="row">
    <div class="col-lg-3 col-md-5 col-xs-12">
-   <h3>{{$job->title}}</h3>
+   <h3><a href="/jobs/{{$job->id}}">{{$job->title}}</h3></a>
    <span class="location"><i class="lni-map-marker"></i>{{$job->city->name}}, {{$job->city->location->name}}</span>
    </div>
    <div class="col-lg-3 col-md-3 col-xs-12">

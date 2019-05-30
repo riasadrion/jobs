@@ -97,8 +97,19 @@
   </div>
   <div class="form-group">
   <label class="control-label">Application URL</label>
-  <input type="text" name="custom_url" class="form-control" placeholder="Enter an email address or website URL">
+<input type="text" name="custom_url" class="form-control" placeholder="Enter an email address or website URL">
   </div>
+
+  <div class="form-group">
+  <label class="control-label">Salary Range</label>
+  <input type="text" name="salary" class="form-control" placeholder="ex. $65000 - $80000">
+  </div>
+
+  <div class="form-group">
+  <label class="control-label">Emabed Map</label>
+  <input type="text" name="map" class="form-control" placeholder="Paste iframe from google map">
+  </div>
+
 
   <div class="form-group">
     <div id="picker"></div>
