@@ -7,7 +7,7 @@
 <!-- CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<title>{{ config('app.name', 'Laravel') }}</title>
+<title>@yield('title')</title>
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}" defer></script>
@@ -59,11 +59,7 @@
 Home
 </a>
 </li>
-<li class="nav-item">
-<a class="nav-link" href="contact.html">
-Contact
-</a>
-</li>
+
 
 @guest
     <li class="nav-item">
@@ -75,6 +71,11 @@ Contact
         </li>
     @endif
 @else
+    <li class="nav-item">
+    <a class="nav-link" href="/dashboard">
+    Dashboard
+    </a>
+    </li>
     <li class="nav-item dropdown">
         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
             {{ Auth::user()->name }} <span class="caret"></span>
@@ -93,6 +94,11 @@ Contact
         </div>
     </li>
 @endguest
+<li class="nav-item">
+<a class="nav-link" href="contact.html">
+Contact
+</a>
+</li>
 <li class="button-group">
 <a href="/jobs/create" class="button btn btn-common">Post a Job</a>
 </li>
@@ -185,11 +191,8 @@ Contact
 <div class="loader" id="loader-1"></div>
 </div>
 
- <script src="{{url('/')}}/js/jquery-min.js"></script>
+<script src="{{url('/')}}/js/jquery-min.js"></script>
   
-
-@yield('js')
-
 <script src="{{url('/')}}/js/app.js"></script>
 <script src="{{url('/')}}/js/popper.min.js"></script>
 <script src="{{url('/')}}/js/bootstrap.min.js"></script>
@@ -200,5 +203,9 @@ Contact
 <script src="{{url('/')}}/js/form-validator.min.js"></script>
 <script src="{{url('/')}}/js/contact-form-script.js"></script>
 <script src="{{url('/')}}/js/main.js"></script>
+
+@yield('js')
+
+
 </body>
 </html>

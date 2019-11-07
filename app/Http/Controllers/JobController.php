@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Job;
 use App\Category;
+use App\Location;
+use App\Type;
 use Illuminate\Http\Request;
 
 class JobController extends Controller
@@ -21,8 +23,8 @@ class JobController extends Controller
 
     public function index()
     {
-        $jobs = Job::all();
-        return view('jobs.index');
+        $jobs = Job::orderBy('id', 'desc')->paginate(6);
+        return view('jobs.index')->with('jobs', $jobs);
     }
 
     /**
@@ -33,7 +35,9 @@ class JobController extends Controller
     public function create()
     {   
         $categories = Category::all();
-        return view('jobs.create', compact('categories'));
+        $locations = Location::all();
+        $types = Type::all();
+        return view('jobs.create', compact('categories','locations', 'types'));
     }
 
     /**
@@ -47,13 +51,15 @@ class JobController extends Controller
         $job = new Job();
 
         $job->title = request('title');
-        $job->location_id = request('location_id');
-        $job->employer_id = request('employer_id');
-        $job->type = request('type');
-        $job->category_id = request('category_id');
         $job->description = request('description');
+        $job->salary = request('salary');
+        $job->map = request('map');
         $job->custom_url = request('custom_url');
         $job->deadline = request('deadline');
+        $job->user_id = auth()->user()->id;
+        $job->category_id = request('category_id');
+        $job->type_id = request('type_id');
+        $job->city_id = request('city_id');
 
 
 
@@ -70,7 +76,7 @@ class JobController extends Controller
      */
     public function show(Job $job)
     {
-        
+        return view('jobs.details', compact('job'));
     }
 
     /**
@@ -106,4 +112,48 @@ class JobController extends Controller
     {
         //
     }
+
+
+
+    //  type operations  ---------------------------------------------------------------------
+        
+        public function typeindex(){
+
+            $types = Type::orderBy('id', 'desc')->paginate(5);
+
+            return view ('dashboard.type', compact('types'));
+        }
+
+
+        public function typestore(Request $request)
+        {
+            $type = new type();
+
+            $type->name = $request->input('name');
+
+            $type->save();
+
+            return redirect("/types")->with('success','type created successfully!');
+        }     
+
+
+        public function typeupdate(Request $request, type $type)
+        {
+
+            $type->name = $request->input('name');
+
+            $type->save();
+
+            return back();
+        }
+
+        
+        public function typedestroy(type $type)
+        {
+            $type->delete();
+
+            return back();
+        }
+
+        //  type operations  ---------------------------------------------------------------------
 }

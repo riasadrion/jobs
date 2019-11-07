@@ -13,4 +13,25 @@ class Job extends Model
 
     	return $this->belongsTo('App\Category');
     }
+
+
+   public function type(){
+
+   	return $this->belongsTo('App\Type');
+   
+   }
+
+   public function city(){
+
+   	return $this->belongsTo('App\City');
+   
+   }
+
+   public function user(){
+
+    return $this->belongsTo('App\User');
+   
+   }
+
+
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Location;
+use App\City;
 use Illuminate\Http\Request;
 
 class LocationController extends Controller
@@ -14,7 +15,9 @@ class LocationController extends Controller
      */
     public function index()
     {
-        //
+       $locations = Location::orderBy('id', 'desc')->paginate(5);
+       $cities = City::orderBy('id', 'desc')->paginate(5);
+       return view('dashboard.location', compact('locations', 'cities'));
     }
 
     /**
@@ -24,7 +27,7 @@ class LocationController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -35,8 +38,51 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $loc = new Location();
+
+        $loc->name = request('name');
+
+        $loc->save();
+
+        return redirect("/locations")->with('success','State created successfully!');
     }
+
+    
+
+//  city operations  ---------------------------------------------------------------------
+    public function citystore(Request $request)
+    {
+        $city = new City();
+
+        $city->location_id = $request->input('loc_id');
+        $city->name = $request->input('name');
+
+        $city->save();
+
+        return redirect("/locations")->with('success','City created successfully!');
+    }     
+
+
+    public function cityupdate(Request $request, City $city)
+    {
+
+        $city->location_id = $request->input('state');
+        $city->name = $request->input('name');
+
+        $city->save();
+
+        return back();
+    }
+
+    
+    public function citydestroy(City $city)
+    {
+        $city->delete();
+
+        return back();
+    }
+
+    //  city operations  ---------------------------------------------------------------------
 
     /**
      * Display the specified resource.
@@ -69,8 +115,14 @@ class LocationController extends Controller
      */
     public function update(Request $request, Location $location)
     {
-        //
-    }
+        $location->name = $request->input('name');
+
+        $location->save();
+
+        return back();
+    }   
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -80,6 +132,10 @@ class LocationController extends Controller
      */
     public function destroy(Location $location)
     {
-        //
+        $location->delete();
+
+        return back();
     }
+
+
 }
