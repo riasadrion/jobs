@@ -11,42 +11,29 @@ class CategoriesController extends Controller
 
     public function index()
     {
-        //
+        $categories = Category::orderBy('id', 'desc')->paginate(6);
+        return view('admin.pages.categories', compact('categories'));
     }
-
-
-    public function create()
-    {
-        //
-    }
-
 
     public function store(Request $request)
     {
-        //
+        $cat = new Category();
+        $cat->name = request('name');
+        $cat->save();
+        return redirect("/controller-categories")->with('success','Category created successfully!');
     }
 
- 
-    public function show(Category $category)
+    public function update(Request $request, Category $controller_category)
     {
-        //
-    }
-
-
-    public function edit(Category $category)
-    {
-        //
-    }
-
-
-    public function update(Request $request, Category $category)
-    {
-        //
+        $controller_category->name = $request->input('name');
+        $controller_category->save();
+        return back();
     }
 
 
-    public function destroy(Category $category)
+    public function destroy(Category $controller_category)
     {
-        //
+        $controller_category->delete();
+        return back();
     }
 }

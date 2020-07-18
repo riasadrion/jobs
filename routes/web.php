@@ -30,8 +30,8 @@ Route::resource('jobs', 'JobController');
 Route::resource('companies', 'CompanyController');
 
 
-//Category Routes
-Route::resource('categories', 'CategoryController');
+// //Category Routes
+// Route::resource('categories', 'CategoryController');
 
 //Type Routes
 Route::get('/types', 'JobController@typeindex');
