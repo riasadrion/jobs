@@ -42,3 +42,9 @@ Route::delete('/types/{type}/delete', 'JobController@typedestroy');
 Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index');
+
+// Admin routes
+Route::namespace('Admin')->group(function () {
+    Route::get('controller-dashboard', 'DashboardController@index');
+    Route::resource('controller-categories', 'CategoriesController');
+});
