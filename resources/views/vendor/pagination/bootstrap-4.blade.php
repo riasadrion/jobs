@@ -3,11 +3,11 @@
         {{-- Previous Page Link --}}
         @if ($paginator->onFirstPage())
             <li class="page-item disabled" aria-disabled="true" aria-label="@lang('pagination.previous')">
-                <a style="background: #9a9a9a !important"  aria-hidden="true">&lsaquo;</a>
+                <a class="page-link"  aria-hidden="true">&lsaquo;</a>
             </li>
         @else
             <li class="page-item">
-                <a  href="{{ $paginator->previousPageUrl() }}" rel="prev" aria-label="@lang('pagination.previous')">&lsaquo;</a>
+                <a class="page-link" href="{{ $paginator->previousPageUrl() }}" rel="prev" aria-label="@lang('pagination.previous')">&lsaquo;</a>
             </li>
         @endif
 
@@ -22,9 +22,9 @@
             @if (is_array($element))
                 @foreach ($element as $page => $url)
                     @if ($page == $paginator->currentPage())
-                        <li class="page-item active" aria-current="page"><a style="background: #9a9a9a !important">{{ $page }}</a></li>
+                        <li class="page-item active" aria-current="page"><a class="page-link">{{ $page }}</a></li>
                     @else
-                        <li class="page-item"><a  href="{{ $url }}">{{ $page }}</a></li>
+                        <li class="page-item"><a class="page-link"  href="{{ $url }}">{{ $page }}</a></li>
                     @endif
                 @endforeach
             @endif
@@ -33,11 +33,11 @@
         {{-- Next Page Link --}}
         @if ($paginator->hasMorePages())
             <li class="page-item">
-                <a  href="{{ $paginator->nextPageUrl() }}" rel="next" aria-label="@lang('pagination.next')">&rsaquo;</a>
+                <a class="page-link" href="{{ $paginator->nextPageUrl() }}" rel="next" aria-label="@lang('pagination.next')">&rsaquo;</a>
             </li>
         @else
             <li class="page-item disabled" aria-disabled="true" aria-label="@lang('pagination.next')">
-                <a style="background: #9a9a9a !important"  aria-hidden="true">&rsaquo;</a>
+                <a class="page-link"  aria-hidden="true">&rsaquo;</a>
             </li>
         @endif
     </ul>

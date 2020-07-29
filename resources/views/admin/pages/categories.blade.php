@@ -31,7 +31,7 @@
                 @endforeach
                 </tbody>
             </table>
-                    {{$categories->links('vendor.pagination.bootstrap-4')}}
+                    {{$categories->links("pagination::bootstrap-4")}}
                 @else
                 No categories found !
                 @endif

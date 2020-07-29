@@ -10,11 +10,11 @@
   <link rel="stylesheet" href="{{url('/')}}/admin/fonts/iconfonts/typicons/src/font/typicons.css">
   <link rel="stylesheet" href="{{url('/')}}/admin/fonts/iconfonts/font-awesome/css/font-awesome.css">
   <link rel="stylesheet" href="{{url('/')}}/admin/iconfonts/flag-icon-css/css/flag-icon.min.css">
-  <link rel="stylesheet" href="{{url('/')}}/admin/css/vendor.bundle.base.css">
-  <link rel="stylesheet" href="{{url('/')}}/admin/css/vendor.bundle.addons.css">
+  <!-- <link rel="stylesheet" href="{{url('/')}}/admin/css/vendor.bundle.base.css"> -->
+  <!-- <link rel="stylesheet" href="{{url('/')}}/admin/css/vendor.bundle.addons.css"> -->
   <link rel="stylesheet" href="{{url('/')}}/admin/css/shared.css">
   <link rel="stylesheet" href="{{url('/')}}/admin/css/style.css">
-  <link rel="stylesheet" href="{{url('/')}}/admin/css/bootstrap-select.css">
+  <!-- <link rel="stylesheet" href="{{url('/')}}/admin/css/bootstrap-select.css"> -->
   <link rel="shortcut icon" href="{{url('/')}}/admin/images/favicon.png" />
   @yield('admin-css')
 </head>
