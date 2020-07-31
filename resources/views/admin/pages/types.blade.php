@@ -2,52 +2,53 @@
 
 @section('content')
    <div class="row">
-   <div class="col-md-6">
+   <div class="col-md-8">
     <div class="card">
         <div class="card-body">
             <h3 class="card-title">Category List</h3>
-                @if(count($categories)>0)
-            <table class="table">
-                <tbody>
-                    <tr>
-                        <td>#</td>
-                        <td>Name</td>
-                <td>Options</td>
-                    </tr>
-            <?php $i = 1 - $categories->perPage(); $skipped = $categories->currentPage() * $categories->perPage(); ?>
-            @foreach($categories as $cat)
+            @if(count($types)>0)
+     <table class="table">
+      <tbody>
+        <tr>
+          <td>#</td>
+          <td>Name</td>
+          <td>Options</td>
+        </tr>
+      <?php $i = 1 - $types->perPage(); $skipped = $types->currentPage() * $types->perPage(); ?>
+      @foreach($types as $type)
 
-                    <tr>
-                        <td>
-                    {{ $skipped + $i }}
-                </td>
-                        <td>{{$cat->name}}</td>
-                <td>
-                    <a data-id="{{$cat->id}}" data-title="{{$cat->name}}" data-toggle="modal" data-target="#edit" style="font-size: 20px; color: #00b1e7" href=""><i class="mdi mdi-square-edit-outline"></i></a>
-                    <a style="font-size: 20px; color: #f89872" data-toggle="modal" data-id="{{$cat->id}}" data-target="#delete" href=""><i class="mdi mdi-delete-outline"></i></a>
-                </td>
-                    </tr>
-                <?php $i++; ?> 
-                @endforeach
-                </tbody>
-            </table>
-                    {{$categories->links("pagination::bootstrap-4")}}
-                @else
-                No categories found !
-                @endif
+        <tr>
+          <td>
+              {{ $skipped + $i }}
+          </td>
+          <td>{{$type->title}}</td>
+          <td>
+            <a style="font-size: 20px; color: #00b1e7" data-id="{{$type->id}}" href="#" data-title="{{$type->title}}" data-toggle="modal" data-target="#edit" style="font-size: 20px; color: #0049d3"><i class="mdi mdi-square-edit-outline"></i></a>
+            <a style="font-size: 20px; color: #f89872" data-toggle="modal" data-id="{{$type->id}}" data-target="#delete" href=""><i class="mdi mdi-delete-outline"></i></a>
+          </td>
+        </tr>
+        <?php $i++; ?> 
+      @endforeach
+
+      </tbody>
+     </table>
+        {{$types->links('vendor.pagination.bootstrap-4')}}
+    @else
+     No types found !
+    @endif
         
         </div>
    </div>   
  </div>
 
-   <div class="col-md-6">
+   <div class="col-md-4">
       <div class="card">
       <div class="card-body">
-      <h3 class="card-title">Add New Category</h3>
-   	   <form class="form-ad" action="" method="POST">
+      <h3 class="card-title">Add Job Type</h3>
+   	   <form class="form-ad" action="/controller-types" method="POST">
    		     @csrf
    		   <div class="form-group">
-   			   <input type="text" name="name" class="form-control" placeholder="Enter Name" required>
+   			   <input type="text" name="title" class="form-control" placeholder="Enter Name" required>
    		   </div>
           <input type="submit"  name="" class="btn btn-success" value="Save">
    	   </form>
@@ -61,18 +62,18 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Update Category</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Update Type</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form id="form1" class="form-ad" action="/controller-categories" method="POST">
-                 @method('put')
+      <form id="form1" class="form-ad" action="" method="POST">
+      @method('put')
       <div class="modal-body">
-                 @csrf
-               <div class="form-group">
-                 <input id="title" type="text" name="name" class="form-control" placeholder="Enter Name" required>
-               </div>
+        @csrf
+      <div class="form-group">
+        <input id="title" type="text" name="title" class="form-control" placeholder="Enter Name" required>
+      </div>
                
             
       </div>
@@ -97,7 +98,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form id="form2" class="form-ad" action="/categories" method="POST">
+      <form id="form2" class="form-ad" action="" method="POST">
                  @method('delete')
                 <div class="modal-body">
                  @csrf
@@ -122,21 +123,19 @@
 
 <script type="text/javascript">
   $('#edit').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) 
-  var id = button.data('id')
-  var title = button.data('title')
-  
-  var modal = $(this)
-  modal.find('.modal-body #title').val(title)
-  $("#form1").attr('action', 'controller-categories/'+id);
-});
+    var button = $(event.relatedTarget) 
+    var id = button.data('id')
+    var title = button.data('title')
+    var modal = $(this)
+    modal.find('.modal-body #title').val(title)
+    $("#form1").attr('action', 'controller-types/'+id);
+  });
 
-
-    $('#delete').on('show.bs.modal', function (event) {
+  $('#delete').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) 
     var id = button.data('id')
     var modal = $(this)
-    $("#form2").attr('action', 'controller-categories/'+id);
+    $("#form2").attr('action', 'controller-types/'+id);
   });
 </script>
 

@@ -24,20 +24,8 @@ Route::delete('/cities/{city}/delete', 'LocationController@citydestroy');
 //Job Routes
 Route::resource('jobs', 'JobController');
 
-
-
 //Company Routes
 Route::resource('companies', 'CompanyController');
-
-
-// //Category Routes
-// Route::resource('categories', 'CategoryController');
-
-//Type Routes
-Route::get('/types', 'JobController@typeindex');
-Route::post('/types/store', 'JobController@typestore');
-Route::post('/types/{type}/update', 'JobController@typeupdate');
-Route::delete('/types/{type}/delete', 'JobController@typedestroy');
 
 Auth::routes();
 
@@ -47,4 +35,5 @@ Route::get('/dashboard', 'DashboardController@index');
 Route::namespace('Admin')->group(function () {
     Route::get('controller-dashboard', 'DashboardController@index');
     Route::resource('controller-categories', 'CategoriesController');
+    Route::resource('controller-types', 'TypesController');
 });

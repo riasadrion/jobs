@@ -28,19 +28,19 @@
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('/')}}/controller-jobs/create">New Jobs</a>
+                        <a class="nav-link" href="/controller-jobs/create">Create a Job</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('/')}}/controller-jobs">Courses</a>
+                        <a class="nav-link" href="/controller-jobs">Jobs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('/')}}/controller-categories">Categories</a>
+                        <a class="nav-link" href="/controller-categories">Categories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/controller-types">Types</a>
                     </li>
                 </ul>
             </div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{url('/')}}/usertypes">User Type</a>
         </li>
     </ul>
 </nav>
