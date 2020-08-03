@@ -45,7 +45,7 @@
 @section('dashboard-content')
  
   <div class="post-job box">
-  @include('error')
+  @include('messages')
   <h3 class="job-title">Post a new Job</h3>
   <form class="form-ad" action="/jobs" method="POST">
     @csrf
@@ -59,7 +59,7 @@
   <label class="control-label">Job Type</span></label>
   <select class="js-example-basic-multiple2 form-control dropdown-product selectpicker" name="type_id" required>
     @foreach($types as $type)
-    <option value="{{$type->id}}">{{$type->name}}</option>
+    <option value="{{$type->id}}">{{$type->title}}</option>
     @endforeach
 
   </select>

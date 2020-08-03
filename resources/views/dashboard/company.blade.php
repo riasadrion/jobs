@@ -10,7 +10,7 @@
    <div class="row">
    <div class="col-md-12">
     <div class="post-job box">
-      @include('error')
+      @include('messages')
     <h3 class="job-title">Company Profile</h3>
     @if(!empty($company))
    <div class="inner-box my-resume">

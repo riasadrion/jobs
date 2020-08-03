@@ -29,7 +29,7 @@ class JobsController extends Controller
         $categories = Category::all();
         $locations = Location::all();
         $types = Type::all();
-        return view('jobs.create', compact('categories','locations', 'types'));
+        return view('Jobs.create', compact('categories','locations', 'types'));
     }
 
     public function store(Request $request)
